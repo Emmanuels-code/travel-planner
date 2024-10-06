@@ -35,9 +35,7 @@ const Navbar = () => (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
                 <div className="flex">
-                    <div className="flex-shrink-0 flex items-center">
-                        <Camera className="h-8 w-8 text-blue-500" />
-                    </div>
+
                     <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a href="google.com" className="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Home
@@ -68,7 +66,9 @@ const Hero = () => (
     <div className="relative bg-white min-h-screen flex flex-col-reverse lg:flex-row">
         {/* Text Section */}
         <div className="w-full lg:w-1/2 flex items-center justify-center p-8 z-10">
+
             <div className="max-w-2xl w-full">
+                <img width="80" height="50" src="https://img.icons8.com/stickers/50/airplane-mode-on.png" alt="airplane-mode-on" />
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                     <span className="block mb-2">Travel Planner</span>
                     <span className="block text-blue-600">Explore the World</span>
@@ -79,7 +79,7 @@ const Hero = () => (
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
                         <a
-                            href="#"
+                            href="/signup"
                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
                         >
                             Get started

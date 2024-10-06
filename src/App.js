@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/homepage';
 import LoginPage from './components/loginpage.js'; // Make sure this path is correct
+import SignUpPage from './components/signuppage.js';
 
 function App() {
   return (
