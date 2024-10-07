@@ -1,49 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import LocationCard from './LocationCard'; // Assuming LocationCard is a separate component
-
+import LocationCard from './locationcard'; // Ensure path is correct
 const LocationList = () => {
-    const [locations, setLocations] = useState([]);
+    const [locations, setLocations] = useState([]); // Initialize as an empty array
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    // Fetch locations from the server
     useEffect(() => {
         const fetchLocations = async () => {
             try {
-                const response = await fetch('/locations'); // Assumes server is running on the same domain
+                const response = await fetch('http://localhost:4000/locations');
                 if (!response.ok) {
                     throw new Error('Failed to fetch locations');
                 }
-                const data = await response.json();
-                setLocations(data); // Set locations with fetched data
-                setLoading(false);
+                const result = await response.json();
+                console.log('API response:', result); // Log to inspect the response
+                setLocations(result.data || []); // Access the `data` array inside the response
             } catch (error) {
                 setError(error.message);
+            } finally {
                 setLoading(false);
             }
         };
-
         fetchLocations();
-    }, []); // Empty dependency array ensures this only runs once on mount
-
+    }, []);
     if (loading) {
-        return <p>Loading locations...</p>; // Show loading indicator
+        return <p className="text-center mt-8">Loading locations...</p>;
     }
-
     if (error) {
-        return <p>Error: {error}</p>; // Show error if any
+        return <p className="text-center mt-8 text-red-500">Error: {error}</p>;
     }
-
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Explore Destinations</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {locations.map((location, index) => (
-                    <LocationCard key={index} {...location} />
-                ))}
+                {Array.isArray(locations) && locations.length > 0 ? (
+                    locations.map((location) => (
+                        <LocationCard
+                            key={location._id} // Keep the key for the list
+                            id={location._id} // Pass location ID as a prop
+                            name={location.name}
+                            description={location.description}
+                            thumbnailUrl={location.thumbnailUrl}
+                            coordinates={location.coordinates}
+                            spots={location.spots}
+                        />
+
+                    ))
+                ) : (
+                    <p>No locations available.</p>
+                )}
             </div>
         </div>
     );
 };
-
-export default LocationList;
+export default LocationList
