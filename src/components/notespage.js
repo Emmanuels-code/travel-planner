@@ -21,7 +21,7 @@ const NotesScreen = () => {
             setLocationId(fetchedLocationId); // Save locationId to state
 
             try {
-                const response = await fetch(`http://localhost:4000/locations/${fetchedLocationId}`);
+                const response = await fetch(`https://youthful-wandering-veil.glitch.me/locations/${fetchedLocationId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch spots');
                 }
@@ -60,7 +60,7 @@ const NotesScreen = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:4000/itineraries', {
+            const response = await fetch('https://youthful-wandering-veil.glitch.me/itineraries', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

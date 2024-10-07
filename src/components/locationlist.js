@@ -7,7 +7,7 @@ const LocationList = () => {
     useEffect(() => {
         const fetchLocations = async () => {
             try {
-                const response = await fetch('http://localhost:4000/locations');
+                const response = await fetch('https://youthful-wandering-veil.glitch.me/locations');
                 if (!response.ok) {
                     throw new Error('Failed to fetch locations');
                 }

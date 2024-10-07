@@ -59,7 +59,7 @@ const AuthedHomePage = () => {
     useEffect(() => {
         const fetchItineraries = async () => {
             try {
-                const response = await fetch('http://localhost:4000/itineraries', {
+                const response = await fetch('https://youthful-wandering-veil.glitch.me/itineraries', {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }

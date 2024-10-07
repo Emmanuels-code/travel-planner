@@ -15,7 +15,7 @@ const SignUpPage = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://veil-cute-gaura.glitch.me/auth/signup', {
+            const response = await axios.post('https://youthful-wandering-veil.glitch.me/auth/signup', {
                 username: name,
                 email: email,
                 password: password,

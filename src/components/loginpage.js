@@ -14,7 +14,7 @@ const LoginPage = () => {
         e.preventDefault();
         setError(''); // Clear any previous error
         try {
-            const response = await axios.post('https://veil-cute-gaura.glitch.me/auth/login', {
+            const response = await axios.post('https://youthful-wandering-veil.glitch.me/auth/login', {
                 email: email,  // Adjust as per backend requirement
                 password: password,
             });
