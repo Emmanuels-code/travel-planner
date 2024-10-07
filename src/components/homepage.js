@@ -2,33 +2,7 @@ import React from 'react';
 import LottieAnimation from './lottieanimation.js';
 import animationData from './Animation - 1728238101879.json';
 
-const locations = [
-    {
-        name: "Paris, France",
-        description: "The City of Light, known for its art, cuisine, and iconic landmarks.",
-        coordinates: { latitude: 48.8566, longitude: 2.3522 }
-    },
-    {
-        name: "Tokyo, Japan",
-        description: "A bustling metropolis blending ultra-modern and traditional culture.",
-        coordinates: { latitude: 35.6762, longitude: 139.6503 }
-    },
-    {
-        name: "New York City, USA",
-        description: "The Big Apple, a global hub of culture, finance, and entertainment.",
-        coordinates: { latitude: 40.7128, longitude: -74.006 }
-    },
-    {
-        name: "Sydney, Australia",
-        description: "A vibrant city known for its stunning harbor and opera house.",
-        coordinates: { latitude: -33.8688, longitude: 151.2093 }
-    },
-    {
-        name: "Rio de Janeiro, Brazil",
-        description: "Famous for its beaches, Carnival, and the statue of Christ the Redeemer.",
-        coordinates: { latitude: -22.9068, longitude: -43.1729 }
-    }
-];
+
 
 const Navbar = () => (
     <nav className="bg-white shadow-md">
@@ -107,32 +81,14 @@ const Hero = () => (
 
 
 
-const LocationCard = ({ name, description }) => (
-    <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-4">
-        <div className="px-4 py-5 sm:px-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">{name}</h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-500">{description}</p>
-        </div>
-    </div>
-);
 
-const LocationList = () => (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Explore Destinations</h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {locations.map((location, index) => (
-                <LocationCard key={index} {...location} />
-            ))}
-        </div>
-    </div>
-);
 
 const HomePage = () => {
     return (
         <div className="bg-white">
             <Navbar />
             <Hero />
-            <LocationList />
+
         </div>
     );
 };

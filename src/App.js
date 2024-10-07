@@ -7,6 +7,7 @@ import SignUpPage from './components/signuppage';
 import PrivateRoute from './components/privateroute.js'; // For private route handling
 import LocationList from './components/locationlist.js';
 import NoteScreen from './components/notespage.js'; // New import for NoteScreen
+import AboutPage from './components/about.js';
 
 // Utility function to check if user is authenticated
 const isAuthenticated = () => {
@@ -23,6 +24,8 @@ function App() {
             path="/"
             element={isAuthenticated() ? <AuthenticatedHomePage /> : <HomePage />}
           />
+
+          <Route path="/about" element={<AboutPage />} />
 
           {/* Login and signup routes */}
           <Route
@@ -54,7 +57,8 @@ function App() {
             }
           />
 
-
+          {/* Catch-all route for undefined paths */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
