@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { User, Lock } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import Modal from './modal.js';  // Import the Modal component
 
 const LoginPage = () => {
@@ -44,7 +44,7 @@ const LoginPage = () => {
                 <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
                     Or{' '}
-                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                    <a href="/signup" className="font-medium text-blue-600 hover:text-blue-500">
                         start planning your next adventure
                     </a>
                 </p>
@@ -56,9 +56,7 @@ const LoginPage = () => {
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <User className="h-5 w-5 text-gray-400" />
-                                </div>
+
                                 <input
                                     id="email"
                                     name="email"

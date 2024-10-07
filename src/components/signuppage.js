@@ -20,7 +20,7 @@ const SignUpPage = () => {
                 email: email,
                 password: password,
             });
-
+            console.log(response)
             // Show success modal on successful sign-up
             setModalMessage('Sign up successful! Welcome aboard!');
             setShowModal(true);
