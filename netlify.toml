@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "client/build"  # Path to your React build folder, adjust if different
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
