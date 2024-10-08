@@ -11,7 +11,7 @@ import AboutPage from './components/about.js';
 
 // Utility function to check if user is authenticated
 const isAuthenticated = () => {
-  return !!localStorage.getItem('token'); // Check if JWT token exists in localStorage
+  return !!localStorage.getItem('token'); // Check if JWT token exists in localStorage, then we know theyre authed
 };
 
 function App() {
