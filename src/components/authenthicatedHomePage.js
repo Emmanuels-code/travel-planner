@@ -36,7 +36,6 @@ const UpcomingTrip = ({ destination, }) => (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-4">
         <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">Upcoming Trip: {destination}</h3>
-
         </div>
     </div>
 );
@@ -98,9 +97,14 @@ const AuthedHomePage = () => {
     }
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-gray-100 min-h-screen" style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1504308924153-cb5b6607f043?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        }}>
             <Navbar onLogout={handleLogout} />
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 bg-white bg-opacity-90 rounded-lg shadow-lg">
                 <div className="px-4 py-6 sm:px-0">
                     <h1 className="text-3xl font-bold text-gray-900 mb-6">Welcome back</h1>
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

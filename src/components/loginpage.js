@@ -34,15 +34,18 @@ const LoginPage = () => {
 
     return (
         <div className="relative min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+            {/* Background Image */}
             <div
-                className="fixed inset-0 w-full h-full bg-cover bg-center z-0"
+                className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
                 style={{
                     backgroundImage: `url('https://miro.medium.com/v2/resize:fit:1400/0*Mua5Y2uq4a-XiK6j.jpg')`,
                 }}
             />
 
-            <div className="fixed inset-0 bg-white bg-opacity-70 z-10 pointer-events-none" />
 
+            <div className="absolute inset-0 bg-white bg-opacity-90 z-10 pointer-events-none" />
+
+            {/* Main Content */}
             <div className="relative z-20 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="flex justify-center">
                     <img className="h-40 w-auto" src="/logo.png" alt="Logo" />
@@ -56,7 +59,8 @@ const LoginPage = () => {
                 </p>
             </div>
 
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            {/* Box with input fields */}
+            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-20">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>

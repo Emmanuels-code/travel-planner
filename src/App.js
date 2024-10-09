@@ -8,10 +8,28 @@ import PrivateRoute from './components/privateroute.js'; // For private route ha
 import LocationList from './components/locationlist.js';
 import NoteScreen from './components/notespage.js'; // New import for NoteScreen
 import AboutPage from './components/about.js';
+import { jwtDecode } from 'jwt-decode';
+
+const isTokenValid = (token) => {
+  if (!token) return false;
+
+  try {
+    const { exp } = jwtDecode(token);
+    // Check if the token has expired
+    if (Date.now() >= exp * 1000) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('Invalid token:', e);
+    return false;
+  }
+};
 
 // Utility function to check if user is authenticated
 const isAuthenticated = () => {
-  return !!localStorage.getItem('token'); // Check if JWT token exists in localStorage, then we know theyre authed
+  const token = localStorage.getItem('token'); // Retrieve token from localStorage
+  return token && isTokenValid(token); // Check if JWT token exists and is valid
 };
 
 function App() {
