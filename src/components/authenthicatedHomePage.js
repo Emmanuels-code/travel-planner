@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, LogOut, PlusCircle } from 'lucide-react';
+import { LogOut, PlusCircle } from 'lucide-react';
 import LottieAnimation from './lottieanimation.js';
 import animationData from './Animation - 1728238101879.json';
 
@@ -23,6 +23,7 @@ const Navbar = ({ onLogout }) => (
                     </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:items-center">
+                    Logout
                     <button onClick={onLogout} className="ml-4 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <LogOut className="h-6 w-6" />
                     </button>
@@ -49,7 +50,7 @@ const RecommendedDestination = ({ name, description }) => (
     </div>
 );
 
-const AuthedHomePage = () => {
+const AuthenticatedHomePage = ({ onLogout }) => {
     const navigate = useNavigate();
     const [itineraries, setItineraries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -58,14 +59,17 @@ const AuthedHomePage = () => {
     useEffect(() => {
         const fetchItineraries = async () => {
             try {
+                const token = localStorage.getItem('token');
                 const response = await fetch('https://youthful-wandering-veil.glitch.me/itineraries', {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        'Authorization': `Bearer ${token}`
                     }
                 });
+
                 if (!response.ok) {
                     throw new Error('Failed to fetch itineraries');
                 }
+
                 const data = await response.json();
                 setItineraries(data);
             } catch (error) {
@@ -83,11 +87,6 @@ const AuthedHomePage = () => {
         navigate('/locations');
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
-    };
-
     if (isLoading) {
         return <div className="text-center py-10">Loading your trips...</div>;
     }
@@ -97,13 +96,8 @@ const AuthedHomePage = () => {
     }
 
     return (
-        <div className="bg-gray-100 min-h-screen" style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1504308924153-cb5b6607f043?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-        }}>
-            <Navbar onLogout={handleLogout} />
+        <div className="bg-gray-100 min-h-screen">
+            <Navbar onLogout={onLogout} />
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 bg-white bg-opacity-90 rounded-lg shadow-lg">
                 <div className="px-4 py-6 sm:px-0">
                     <h1 className="text-3xl font-bold text-gray-900 mb-6">Welcome back</h1>
@@ -144,4 +138,7 @@ const AuthedHomePage = () => {
     );
 };
 
-export default AuthedHomePage;
+
+
+
+export default AuthenticatedHomePage;

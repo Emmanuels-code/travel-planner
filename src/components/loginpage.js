@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Lock, Mail } from 'lucide-react';
-import Modal from './modal.js';  // Import the Modal component
+import Modal from './modal.js';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -22,8 +22,20 @@ const LoginPage = () => {
             setModalMessage('Login successful! Welcome back!');
             setShowModal(true);
 
-            localStorage.setItem('token', response.data.accessToken);
-            window.location.href = '/';
+            // Store token in localStorage with error handling
+            try {
+                localStorage.setItem('token', response.data.accessToken);
+                console.log('Token stored successfully');
+            } catch (error) {
+                console.error('Failed to save token in localStorage:', error);
+                setError('Failed to save token, you may have to adjust your browser settings');
+                return;
+            }
+
+            // Ensure redirect happens after token is set
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 100);
 
         } catch (error) {
             setModalMessage('Login failed! Please try again.');
@@ -34,18 +46,13 @@ const LoginPage = () => {
 
     return (
         <div className="relative min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-            {/* Background Image */}
             <div
                 className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
                 style={{
                     backgroundImage: `url('https://miro.medium.com/v2/resize:fit:1400/0*Mua5Y2uq4a-XiK6j.jpg')`,
                 }}
             />
-
-
             <div className="absolute inset-0 bg-white bg-opacity-90 z-10 pointer-events-none" />
-
-            {/* Main Content */}
             <div className="relative z-20 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="flex justify-center">
                     <img className="h-40 w-auto" src="/logo.png" alt="Logo" />
@@ -58,8 +65,6 @@ const LoginPage = () => {
                     </a>
                 </p>
             </div>
-
-            {/* Box with input fields */}
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-20">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form className="space-y-6" onSubmit={handleSubmit}>
